@@ -1,0 +1,48 @@
+{% extends 'myapp/base.html' %} {% block content %}
+<div class="container  py-3">
+    <style>
+        #rcorners{border-radius:25px;
+            backround: #000;
+            width: 1060x;px; 
+            height:90px;
+            
+        }
+    </style>
+    <div class="card bg-secondary  border border-info"id="rcorners">
+        <div class="card-body ">
+            <h2 class="my-3 text-center text-warning border border-warning bg-secondary">Bus Reservation System </h2>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-4">
+        <div class="col-lg-50 col-md-7 col-sm-10 col-xs-12">
+            <div class="card rounded-0 bg-secondary border border-info">
+                <div class="card-header bg-warning border border-info">
+                    <div class="card-title h3 fw-bolde mb-0 text-center text-dark">Login</div>
+                </div>
+                <div class="card-body  border border-info ">
+                    <div class="container-fluid">
+                        <form action="{% url 'signin' %}" method="post" id="signin-form">
+                            {% csrf_token %}
+                            <div class="mb-3 text-dark">
+                                <label for="username" class="control-label text-light">Username:</label>
+                                <input name='name' class="form-control rounded-0 border border-warning bg-dark text-light" type="text" id="username" required>
+                            </div>
+                            <div class="mb-3 text-dark">
+                                <label for="example-email-input" class="control-label text-light">Password:</label>
+                                <input name='password' class="form-control rounded-0 border border-warning bg-dark text-light" type="password" required>
+                            </div>
+
+                        </form>
+                        <p>{{error}}</p>
+                    </div>
+                </div>
+                <div class="card-footer text-center bg-secondary border border-info">
+                    <button class="btn btn-sm rounded-0 btn-primary btn-block w-100 btn-danger border border-warning text-light" form="signin-form">Login</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

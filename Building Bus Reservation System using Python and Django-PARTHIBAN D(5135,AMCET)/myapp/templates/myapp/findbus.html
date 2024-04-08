@@ -1,0 +1,44 @@
+{% extends 'myapp/base.html' %} {% block content %}
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-10 col-xs-12">
+            <div class="card rounded-0 bg-secondary border border-info ">
+                <div class="card-header">
+                    <div class="card-title h3 mb-0  bg-warning text-dark border border-danger text-center
+                    ">Find Bus</div>
+                </div>
+                <div class="card-body border border-info bg-secondary">
+                    <div class="container-fluid  bg-secondary">
+                        <form action="{% url 'findbus' %}" method="post" id="find-form">
+                            {% csrf_token %}
+                            <div class="mb-3 ">
+                                <label for="source" class="control-labell text-light">From:</label>
+                                <input name='source' class="form-control rounded-0 border border-warning bg-dark text-white " type="text" id="source" value="{% if data.source %}{{data.source}}{% endif %}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="destination" class="control-labell text-light">Destination:</label>
+                                <input name='destination' id="destination" class="form-control rounded-0   border border-warning bg-dark text-white" type="text" value="{% if data.destination %}{{data.destination}}{% endif %}" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="date" class="control-labell text-light">Date:</label>
+                                <input name='date' id="date" class="form-control rounded-0  border border-warning bg-dark text-light " type="date" value="{% if data.date %}{{data.date}}{% endif %}" required>
+
+                            </div>
+                            {% if error %}
+                            <div class="alert alert-danger">
+                                {{error}}
+                            </div>
+                            {% endif %}
+
+                        </form>
+                    </div>
+                </div>
+                <div class="card-footer text-center bg-secondary border border-info">
+                    <button class="btn btn-sm rounded-0  w-100 border border-warning btn-danger text-light" form="find-form">Find</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
